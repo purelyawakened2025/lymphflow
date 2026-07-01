@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Lymph Flow Wellness System™ · Purely Awakened</title>
+<title>The Grounding Protocol · Lymph Flow Wellness System™</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --teal: #3B7D78;
-  --teal-dark: #2a5c58;
   --aqua: #A8D5D1;
   --sand: #E8DDD0;
   --sand-dark: #c8a96a;
@@ -18,916 +17,530 @@
   --warm: #F5EFE6;
   --muted: #7A8C8B;
   --white: #ffffff;
-  --red: #c0392b;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { background:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; color:var(--deep); overflow-x:hidden; }
+body { background:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; color:var(--deep); padding:40px 24px 80px; }
+.page { max-width:680px; margin:0 auto; }
 
-/* STICKY FLOAT BAR */
-.float-bar {
-  position:fixed; bottom:0; left:0; right:0; z-index:200;
-  background:var(--deep);
-  border-top:1px solid rgba(168,213,209,0.2);
-  padding:14px 24px;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-  transform:translateY(100%);
-  transition:transform 0.4s ease;
-}
-.float-bar.visible { transform:translateY(0); }
-.float-bar-text { font-size:13px; color:var(--sand); line-height:1.4; }
-.float-bar-text strong { color:var(--aqua); }
-.float-bar-btn {
-  background:var(--aqua); color:var(--deep);
-  padding:11px 24px; border-radius:30px;
-  font-size:13px; font-weight:500;
-  text-decoration:none; white-space:nowrap;
-  transition:all 0.2s;
-  flex-shrink:0;
-}
-.float-bar-btn:hover { background:white; }
-@media(max-width:600px){
-  .float-bar-text { font-size:11px; }
-  .float-bar-btn { padding:10px 16px; font-size:12px; }
-}
-
-/* ANNOUNCEMENT BAR */
-.bar {
-  background:var(--teal);
-  color:white;
+/* SECTION HEADER */
+.section-header {
+  background:linear-gradient(160deg, #1C3533, #2a5c58);
+  border-radius:20px;
+  padding:56px 48px;
   text-align:center;
-  padding:11px 20px;
-  font-size:12px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-}
-
-/* NAV */
-nav {
-  background:var(--cream);
-  padding:16px 40px;
-  display:flex; align-items:center; justify-content:space-between;
-  border-bottom:1px solid rgba(59,125,120,0.1);
-  position:sticky; top:0; z-index:100;
-  backdrop-filter:blur(12px);
-}
-.nav-logo { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--deep); }
-.nav-logo span { color:var(--teal); }
-.nav-cta {
-  background:var(--teal); color:white;
-  padding:10px 22px; border-radius:30px;
-  font-size:12px; letter-spacing:1px;
-  text-decoration:none; transition:background 0.2s;
-}
-.nav-cta:hover { background:var(--teal-dark); }
-
-/* HERO */
-.hero {
-  min-height:100vh;
-  display:grid; grid-template-columns:1fr 1fr;
+  margin-bottom:32px;
+  position:relative;
   overflow:hidden;
 }
-@media(max-width:768px){ .hero { grid-template-columns:1fr; min-height:auto; } }
-
-.hero-left {
-  background:var(--deep);
-  padding:80px 60px;
-  display:flex; flex-direction:column; justify-content:center;
-  position:relative; overflow:hidden;
-}
-.hero-left::before {
-  content:''; position:absolute; top:-100px; right:-100px;
-  width:400px; height:400px; border-radius:50%;
+.section-header::before {
+  content:'';
+  position:absolute;
+  top:-80px; right:-80px;
+  width:260px; height:260px;
+  border-radius:50%;
   background:radial-gradient(circle,rgba(168,213,209,0.12),transparent 65%);
 }
-.hero-left::after {
-  content:''; position:absolute; bottom:-60px; left:-60px;
-  width:280px; height:280px; border-radius:50%;
-  background:radial-gradient(circle,rgba(200,169,106,0.08),transparent 65%);
+.section-badge {
+  display:inline-block;
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--aqua); border:1px solid rgba(168,213,209,0.3);
+  padding:5px 16px; border-radius:20px; margin-bottom:20px;
 }
-.hero-eyebrow {
-  font-size:11px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--aqua); margin-bottom:24px;
-  opacity:0; animation:fadeUp 0.8s ease 0.2s both;
-}
-.hero-h1 {
+.section-title {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,4vw,60px); font-weight:300;
-  color:var(--sand); line-height:1.12; margin-bottom:12px;
-  opacity:0; animation:fadeUp 0.8s ease 0.35s both;
+  font-size:clamp(32px,5vw,52px); font-weight:300;
+  color:var(--sand); line-height:1.15; margin-bottom:12px;
 }
-.hero-h1 em { font-style:italic; color:var(--aqua); }
-.hero-trademark {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(13px,1.8vw,18px); color:var(--sand-dark);
-  letter-spacing:4px; text-transform:uppercase; margin-bottom:28px;
-  opacity:0; animation:fadeUp 0.8s ease 0.45s both;
+.section-title em { font-style:italic; color:var(--aqua); }
+.section-subtitle {
+  font-size:14px; color:rgba(232,221,208,0.65);
+  line-height:1.7; max-width:420px; margin:0 auto;
 }
-.hero-desc {
-  font-size:15px; line-height:1.8;
-  color:rgba(232,221,208,0.75); max-width:420px; margin-bottom:36px;
-  opacity:0; animation:fadeUp 0.8s ease 0.55s both;
+.divider {
+  display:flex; align-items:center; gap:12px;
+  margin:32px 0;
 }
-.hero-badges {
-  display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;
-  opacity:0; animation:fadeUp 0.8s ease 0.65s both;
-}
-.badge {
-  font-size:11px; padding:6px 14px; border-radius:20px;
-  border:1px solid rgba(168,213,209,0.3); color:var(--aqua); letter-spacing:1px;
-}
-.hero-btn {
-  display:inline-block; background:var(--aqua); color:var(--deep);
-  padding:16px 36px; border-radius:50px;
-  font-size:14px; font-weight:500; letter-spacing:1px;
-  text-decoration:none; transition:all 0.25s ease; width:fit-content;
-  opacity:0; animation:fadeUp 0.8s ease 0.75s both;
-}
-.hero-btn:hover { background:white; transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,0.2); }
-.hero-sub-note {
-  margin-top:12px; font-size:11px; color:rgba(168,213,209,0.5); letter-spacing:1px;
-  opacity:0; animation:fadeUp 0.8s ease 0.85s both;
-}
+.divider-line { flex:1; height:1px; background:rgba(59,125,120,0.15); }
+.divider-dot { width:6px; height:6px; border-radius:50%; background:var(--sand-dark); }
 
-.hero-right {
-  background:var(--warm);
-  display:flex; align-items:center; justify-content:center;
-  padding:60px 40px; position:relative; overflow:hidden;
-}
-.hero-right::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(circle at 20% 80%,rgba(168,213,209,0.2) 0%,transparent 50%),
-             radial-gradient(circle at 80% 20%,rgba(155,174,154,0.15) 0%,transparent 50%);
-}
-.mockup {
-  width:100%; max-width:340px; background:var(--white);
-  border-radius:16px;
-  box-shadow:0 40px 80px rgba(28,53,51,0.15),0 8px 24px rgba(28,53,51,0.08);
-  overflow:hidden; position:relative; z-index:1;
-  opacity:0; animation:fadeUp 0.9s ease 0.5s both;
-}
-.mockup-cover {
-  background:linear-gradient(160deg,#f0ede8,#e4ddd2);
-  padding:36px 28px 28px; text-align:center;
-  border-bottom:3px solid var(--teal);
-}
-.mockup-brand { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
-.mockup-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--teal); line-height:1.2; margin-bottom:8px; }
-.mockup-sub { font-size:11px; color:var(--muted); font-style:italic; margin-bottom:18px; }
-.mockup-swatches { display:flex; gap:6px; justify-content:center; }
-.mockup-swatch { width:28px; height:10px; border-radius:4px; }
-.mockup-tagline { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:14px; }
-.mockup-pages { padding:18px 22px; }
-.mockup-page-item {
-  display:flex; align-items:center; gap:10px;
-  padding:8px 0; border-bottom:1px solid rgba(59,125,120,0.08);
-}
-.mockup-page-item:last-child { border-bottom:none; }
-.mockup-dot { width:6px; height:6px; border-radius:50%; background:var(--teal); flex-shrink:0; }
-.mockup-page-name { font-size:12px; color:var(--deep); }
-.mockup-page-num { margin-left:auto; font-size:10px; color:var(--muted); }
-
-/* TRUST BAR */
-.trust-bar {
+/* CONTENT BLOCKS */
+.content-block {
   background:var(--white);
-  border-bottom:1px solid rgba(59,125,120,0.1);
-  padding:16px 40px;
-  display:flex; align-items:center; justify-content:center;
-  gap:32px; flex-wrap:wrap;
-}
-.trust-item {
-  display:flex; align-items:center; gap:8px;
-  font-size:12px; color:var(--muted); letter-spacing:0.5px;
-}
-.trust-icon { font-size:16px; }
-
-/* SOCIAL PROOF STRIP */
-.social-strip {
-  background:var(--teal); padding:22px 40px;
-  display:flex; gap:40px; justify-content:center; flex-wrap:wrap;
-}
-.stat { text-align:center; color:white; }
-.stat-num { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; display:block; }
-.stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:0.75; }
-
-/* SECTION BASE */
-.section { padding:90px 40px; }
-.section-inner { max-width:920px; margin:0 auto; }
-.section-tag {
-  display:inline-block; font-size:10px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--teal); border:1px solid rgba(59,125,120,0.25);
-  padding:5px 14px; border-radius:20px; margin-bottom:20px;
-}
-.section-h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(30px,4vw,50px); font-weight:400;
-  line-height:1.15; color:var(--deep); margin-bottom:16px;
-}
-.section-h2 em { font-style:italic; color:var(--teal); }
-.section-lead { font-size:16px; line-height:1.8; color:var(--muted); max-width:600px; margin-bottom:48px; }
-
-/* WHO THIS IS FOR */
-.who-section { background:var(--white); }
-.who-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:36px; }
-@media(max-width:600px){ .who-grid { grid-template-columns:1fr; } }
-.who-card {
-  border-radius:14px; padding:20px 18px;
-  display:flex; gap:14px; align-items:flex-start;
-}
-.who-card.yes { background:rgba(168,213,209,0.12); border:1px solid rgba(59,125,120,0.15); }
-.who-card.no { background:rgba(240,235,228,0.6); border:1px solid rgba(59,125,120,0.08); }
-.who-mark { font-size:18px; flex-shrink:0; margin-top:2px; }
-.who-text { font-size:13px; color:var(--deep); line-height:1.6; }
-.who-text strong { font-weight:500; display:block; margin-bottom:2px; }
-
-/* TRANSFORMATION */
-.transform-section { background:var(--deep); padding:90px 40px; }
-.transform-inner { max-width:800px; margin:0 auto; text-align:center; }
-.transform-section .section-tag { border-color:rgba(168,213,209,0.3); color:var(--aqua); }
-.transform-section .section-h2 { color:var(--sand); }
-.transform-section .section-h2 em { color:var(--aqua); }
-.before-after {
-  display:grid; grid-template-columns:1fr auto 1fr; gap:16px;
-  align-items:center; margin:40px 0;
-}
-@media(max-width:600px){ .before-after { grid-template-columns:1fr; gap:12px; } }
-.ba-col { border-radius:16px; padding:28px 22px; }
-.ba-before { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); }
-.ba-after { background:rgba(168,213,209,0.1); border:1px solid rgba(168,213,209,0.2); }
-.ba-label {
-  font-size:10px; letter-spacing:3px; text-transform:uppercase; margin-bottom:16px;
-}
-.ba-before .ba-label { color:rgba(232,221,208,0.4); }
-.ba-after .ba-label { color:var(--aqua); }
-.ba-items { list-style:none; }
-.ba-items li { font-size:13px; line-height:1.6; padding:5px 0; }
-.ba-before .ba-items li { color:rgba(232,221,208,0.55); }
-.ba-after .ba-items li { color:var(--sand); }
-.ba-before .ba-items li::before { content:'✗ '; color:rgba(232,221,208,0.25); }
-.ba-after .ba-items li::before { content:'✦ '; color:var(--aqua); }
-.ba-arrow { font-size:28px; color:var(--aqua); opacity:0.6; text-align:center; }
-
-/* SYMPTOM CARDS */
-.symptom-grid {
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:14px; margin-bottom:40px;
-}
-.symptom-card {
-  background:var(--white); border:1px solid rgba(59,125,120,0.1);
-  border-radius:14px; padding:20px 18px;
-  transition:transform 0.2s,box-shadow 0.2s;
-}
-.symptom-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(59,125,120,0.1); }
-.symptom-icon { font-size:22px; margin-bottom:10px; }
-.symptom-title { font-size:14px; font-weight:500; color:var(--deep); margin-bottom:4px; }
-.symptom-text { font-size:12px; color:var(--muted); line-height:1.6; }
-.relatable-note { background:var(--deep); border-radius:16px; padding:32px 36px; }
-.relatable-note p {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(18px,2.5vw,24px); font-style:italic; font-weight:300;
-  color:var(--sand); line-height:1.7;
-}
-.relatable-note p span { color:var(--aqua); }
-
-/* WHAT'S INSIDE */
-.inside-section { background:var(--warm); }
-.inside-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
-.inside-card {
-  background:var(--white); border-radius:16px; overflow:hidden;
+  border-radius:16px;
+  padding:36px 32px;
+  margin-bottom:20px;
   border:1px solid rgba(59,125,120,0.08);
-  transition:transform 0.2s,box-shadow 0.2s;
 }
-.inside-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(59,125,120,0.12); }
-.inside-card-top { padding:24px 22px 16px; position:relative; }
-.inside-card-num {
-  position:absolute; top:16px; right:16px;
-  font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300;
-  color:rgba(59,125,120,0.1); line-height:1;
+.block-eyebrow {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--teal); margin-bottom:12px; font-weight:500;
 }
-.inside-card-icon { font-size:24px; margin-bottom:10px; }
-.inside-card-title { font-size:15px; font-weight:500; color:var(--deep); margin-bottom:6px; }
-.inside-card-desc { font-size:12px; color:var(--muted); line-height:1.6; }
-.inside-card-footer { padding:12px 22px; border-top:1px solid rgba(59,125,120,0.07); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal); }
+.block-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3vw,30px); font-weight:400;
+  color:var(--deep); line-height:1.25; margin-bottom:16px;
+}
+.block-title em { font-style:italic; color:var(--teal); }
+.block-body {
+  font-size:14px; line-height:1.85; color:var(--muted);
+}
+.block-body p { margin-bottom:14px; }
+.block-body p:last-child { margin-bottom:0; }
+.block-body strong { color:var(--deep); font-weight:500; }
 
-/* PROMISE */
-.promise-section { background:var(--deep); padding:90px 40px; text-align:center; }
-.promise-inner { max-width:680px; margin:0 auto; }
-.promise-section .section-tag { border-color:rgba(168,213,209,0.3); color:var(--aqua); }
-.promise-section .section-h2 { color:var(--sand); }
-.promise-section .section-h2 em { color:var(--aqua); }
-.affirmation-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:36px 0; }
-@media(max-width:500px){ .affirmation-grid { grid-template-columns:1fr; } }
-.aff-card {
-  border:1px solid rgba(168,213,209,0.2); border-radius:12px; padding:22px 18px;
-  font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic;
-  color:var(--sand); line-height:1.5; transition:background 0.2s;
-}
-.aff-card:hover { background:rgba(168,213,209,0.06); }
-
-/* TESTIMONIALS */
-.testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; margin-top:36px; }
-.testi-card { background:var(--white); border-radius:14px; padding:26px 22px; border:1px solid rgba(59,125,120,0.08); position:relative; }
-.testi-card::before {
-  content:'"'; position:absolute; top:10px; left:18px;
-  font-family:'Cormorant Garamond',serif; font-size:60px; color:rgba(59,125,120,0.08);
-  line-height:1;
-}
-.testi-stars { color:var(--sand-dark); font-size:13px; margin-bottom:12px; letter-spacing:3px; }
-.testi-text { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--deep); line-height:1.65; margin-bottom:16px; }
-.testi-name { font-size:11px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; }
-
-/* GUARANTEE */
-.guarantee-section { background:var(--cream); padding:70px 40px; }
-.guarantee-box {
-  max-width:680px; margin:0 auto;
-  background:var(--white); border-radius:20px; padding:48px 44px;
-  border:2px solid rgba(59,125,120,0.15);
-  display:flex; gap:32px; align-items:flex-start;
-}
-@media(max-width:600px){ .guarantee-box { flex-direction:column; padding:32px 24px; gap:20px; } }
-.guarantee-seal {
-  width:90px; height:90px; flex-shrink:0;
-  border-radius:50%; background:var(--teal);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
+/* QUOTE BLOCK */
+.quote-block {
+  background:var(--deep);
+  border-radius:16px;
+  padding:36px 32px;
+  margin-bottom:20px;
   text-align:center;
 }
-.guarantee-seal span { font-size:22px; }
-.guarantee-seal small { font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-top:2px; }
-.guarantee-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:400; color:var(--deep); margin-bottom:10px; }
-.guarantee-text { font-size:14px; color:var(--muted); line-height:1.8; }
+.quote-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,3vw,28px); font-style:italic; font-weight:300;
+  color:var(--sand); line-height:1.5; margin-bottom:12px;
+}
+.quote-text span { color:var(--aqua); }
+.quote-attr { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(168,213,209,0.5); }
 
-/* PRICING */
-.pricing-section { background:var(--warm); text-align:center; }
-.pricing-card {
-  max-width:500px; margin:0 auto;
-  background:var(--white); border-radius:24px; overflow:hidden;
-  box-shadow:0 24px 64px rgba(28,53,51,0.12);
+/* SCIENCE BLOCK */
+.science-block {
+  background:linear-gradient(135deg,#e8f5f4,#d4ecea);
+  border-radius:16px;
+  padding:32px;
+  margin-bottom:20px;
+  border:1px solid rgba(59,125,120,0.15);
+}
+.science-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; color:var(--teal); margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+.science-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+@media(max-width:500px){ .science-grid { grid-template-columns:1fr; } }
+.science-item {
+  background:rgba(255,255,255,0.7);
+  border-radius:10px; padding:14px 16px;
   border:1px solid rgba(59,125,120,0.1);
 }
-.pricing-top { background:var(--deep); padding:40px 36px 32px; }
-.pricing-badge {
-  display:inline-block; background:var(--teal); color:white;
-  font-size:10px; letter-spacing:2px; text-transform:uppercase;
-  padding:5px 14px; border-radius:20px; margin-bottom:18px;
-}
-.pricing-name { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--sand); margin-bottom:8px; }
-.pricing-strike { font-size:13px; color:rgba(168,213,209,0.5); margin-bottom:6px; letter-spacing:1px; }
-.pricing-strike s { text-decoration:line-through; }
-.pricing-price { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:600; color:var(--aqua); line-height:1; }
-.pricing-price sup { font-size:24px; vertical-align:top; margin-top:14px; display:inline-block; }
-.pricing-price-note { font-size:12px; color:rgba(168,213,209,0.6); margin-top:6px; letter-spacing:1px; }
-.countdown-wrap { margin-top:18px; background:rgba(168,213,209,0.07); border:1px solid rgba(168,213,209,0.15); border-radius:12px; padding:14px 16px; }
-.countdown-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(168,213,209,0.6); margin-bottom:10px; }
-.countdown-timer { display:flex; align-items:center; justify-content:center; gap:6px; }
-.countdown-block { display:flex; flex-direction:column; align-items:center; background:rgba(168,213,209,0.1); border-radius:8px; padding:8px 14px; min-width:56px; }
-.countdown-block span { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; color:var(--aqua); line-height:1; }
-.countdown-block small { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(168,213,209,0.5); margin-top:3px; }
-.countdown-sep { font-size:22px; color:rgba(168,213,209,0.4); margin-bottom:12px; }
-.pricing-body { padding:32px 36px; }
-.pricing-features { list-style:none; text-align:left; margin-bottom:28px; }
-.pricing-features li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid rgba(59,125,120,0.07); font-size:14px; color:var(--deep); line-height:1.5; }
-.pricing-features li:last-child { border-bottom:none; }
-.check { color:var(--teal); font-size:16px; flex-shrink:0; margin-top:1px; }
-.pricing-btn {
-  display:block; width:100%; background:var(--teal); color:white; border:none;
-  padding:18px; border-radius:50px; font-size:16px;
-  font-family:'DM Sans',sans-serif; font-weight:500; cursor:pointer;
-  transition:all 0.25s ease; text-decoration:none; text-align:center; letter-spacing:0.5px;
-}
-.pricing-btn:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 12px 32px rgba(59,125,120,0.3); }
-.pricing-guarantee-note { margin-top:14px; font-size:12px; color:var(--muted); display:flex; align-items:center; justify-content:center; gap:6px; }
+.science-item-title { font-size:12px; font-weight:500; color:var(--teal); margin-bottom:4px; }
+.science-item-text { font-size:12px; color:var(--muted); line-height:1.6; }
 
-/* FAQ */
-.faq-list { max-width:660px; margin:36px auto 0; }
-.faq-item { background:var(--white); border-radius:12px; margin-bottom:10px; border:1px solid rgba(59,125,120,0.1); overflow:hidden; }
-.faq-q { padding:18px 20px; font-size:14px; font-weight:500; color:var(--deep); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
-.faq-icon { color:var(--teal); font-size:18px; flex-shrink:0; transition:transform 0.25s; }
-.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease,padding 0.3s ease; font-size:13px; line-height:1.7; color:var(--muted); padding:0 20px; }
-.faq-item.open .faq-a { max-height:200px; padding:0 20px 18px; }
-.faq-item.open .faq-icon { transform:rotate(45deg); }
-
-/* FINAL CTA SECTION */
-.final-cta {
-  background:linear-gradient(160deg, var(--teal) 0%, var(--teal-dark) 100%);
-  padding:90px 40px; text-align:center;
+/* PRACTICE CARDS */
+.practice-grid {
+  display:grid; grid-template-columns:1fr;
+  gap:14px; margin-bottom:20px;
 }
-.final-cta-inner { max-width:640px; margin:0 auto; }
-.final-cta h2 {
+.practice-card {
+  background:var(--white);
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(59,125,120,0.08);
+}
+.practice-card-top {
+  padding:22px 24px 16px;
+  display:flex; gap:16px; align-items:flex-start;
+}
+.practice-num {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--teal); color:white;
+  display:flex; align-items:center; justify-content:center;
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(32px,4vw,52px); font-weight:300;
-  color:white; line-height:1.2; margin-bottom:16px;
+  font-size:18px; font-weight:600; flex-shrink:0;
 }
-.final-cta h2 em { font-style:italic; color:var(--aqua); }
-.final-cta p { font-size:15px; color:rgba(255,255,255,0.75); line-height:1.8; margin-bottom:36px; }
-.final-cta-btn {
-  display:inline-block; background:white; color:var(--teal);
-  padding:18px 44px; border-radius:50px;
-  font-size:16px; font-weight:500;
-  text-decoration:none; transition:all 0.25s;
-  box-shadow:0 8px 32px rgba(0,0,0,0.15);
+.practice-content { flex:1; }
+.practice-title { font-size:15px; font-weight:500; color:var(--deep); margin-bottom:6px; }
+.practice-desc { font-size:13px; color:var(--muted); line-height:1.65; }
+.practice-card-footer {
+  padding:10px 24px;
+  background:rgba(168,213,209,0.08);
+  border-top:1px solid rgba(59,125,120,0.07);
+  font-size:11px; color:var(--teal); letter-spacing:1px;
+  font-style:italic;
 }
-.final-cta-btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,0.2); }
-.final-cta-note { margin-top:16px; font-size:12px; color:rgba(255,255,255,0.5); letter-spacing:1px; }
 
-/* FOOTER */
-footer { background:var(--deep); padding:48px 40px; text-align:center; }
-.footer-logo { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--sand); margin-bottom:8px; }
-.footer-tagline { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--aqua); margin-bottom:20px; }
-.footer-note { font-size:12px; color:rgba(232,221,208,0.35); }
+/* SYMPTOMS */
+.symptom-block {
+  background:var(--warm);
+  border-radius:16px; padding:32px;
+  margin-bottom:20px;
+  border:1px solid rgba(200,169,106,0.15);
+}
+.symptom-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; color:var(--deep); margin-bottom:6px;
+}
+.symptom-sub { font-size:13px; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.symptom-list { list-style:none; }
+.symptom-list li {
+  display:flex; gap:12px; align-items:flex-start;
+  padding:8px 0; border-bottom:1px solid rgba(59,125,120,0.07);
+  font-size:13px; color:var(--deep); line-height:1.6;
+}
+.symptom-list li:last-child { border-bottom:none; }
+.symptom-list li::before { content:'✦'; color:var(--sand-dark); flex-shrink:0; margin-top:1px; }
 
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease,transform 0.7s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
+/* AFFIRMATION */
+.affirmation-block {
+  background:var(--deep);
+  border-radius:16px; padding:36px 32px;
+  margin-bottom:20px; text-align:center;
+}
+.affirmation-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
+}
+@media(max-width:500px){ .affirmation-grid { grid-template-columns:1fr; } }
+.aff-card {
+  border:1px solid rgba(168,213,209,0.2);
+  border-radius:12px; padding:20px 16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px; font-style:italic;
+  color:var(--sand); line-height:1.5;
+}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav { padding:14px 20px; }
-  .hero-left { padding:56px 24px; }
-  .hero-right { padding:40px 20px; min-height:380px; }
-  .section { padding:60px 24px; }
-  .promise-section,.transform-section,.guarantee-section,.final-cta { padding:60px 24px; }
-  .pricing-section { padding:60px 24px; }
-  .social-strip { gap:20px; padding:20px 20px; }
-  .pricing-top { padding:28px 22px; }
-  .pricing-body { padding:22px 22px; }
-  .trust-bar { gap:16px; padding:14px 20px; }
+/* PROTOCOL */
+.protocol-block {
+  background:linear-gradient(135deg,#f5f0e8,#ede4d0);
+  border-radius:16px; padding:32px;
+  margin-bottom:20px;
+  border:1px solid rgba(200,169,106,0.2);
+}
+.protocol-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; color:var(--deep); margin-bottom:6px;
+}
+.protocol-sub { font-size:13px; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.protocol-steps { list-style:none; }
+.protocol-step {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:12px 0; border-bottom:1px solid rgba(59,125,120,0.1);
+}
+.protocol-step:last-child { border-bottom:none; }
+.step-time {
+  font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--sand-dark); background:rgba(200,169,106,0.15);
+  padding:3px 10px; border-radius:20px; flex-shrink:0;
+  margin-top:2px; white-space:nowrap;
+}
+.step-text { font-size:13px; color:var(--deep); line-height:1.65; }
+.step-text strong { font-weight:500; }
+
+/* JOURNAL */
+.journal-block {
+  background:var(--white);
+  border-radius:16px; padding:32px;
+  margin-bottom:20px;
+  border:1px solid rgba(59,125,120,0.08);
+}
+.journal-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; color:var(--deep); margin-bottom:6px;
+}
+.journal-sub { font-size:13px; color:var(--muted); margin-bottom:24px; font-style:italic; }
+.journal-prompt {
+  background:var(--cream);
+  border-radius:10px; padding:16px 18px;
+  margin-bottom:10px;
+  border-left:3px solid var(--teal);
+}
+.journal-prompt-q { font-size:13px; color:var(--teal); font-weight:500; margin-bottom:6px; }
+.journal-lines { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.journal-line { height:1px; background:rgba(59,125,120,0.12); }
+
+/* PRINT ME */
+.print-note {
+  text-align:center; padding:20px;
+  font-size:12px; color:var(--muted);
+  border-top:1px solid rgba(59,125,120,0.1);
+  margin-top:32px;
 }
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- FLOATING STICKY BAR -->
-<div class="float-bar" id="floatBar">
-  <div class="float-bar-text">🌿 <strong>Launch Special — $47</strong> (Regular $67) · Offer ends soon</div>
-  <a href="https://purelyawakened.gumroad.com/l/obsxp" class="float-bar-btn">Restore My Flow →</a>
+  <!-- SECTION HEADER -->
+  <div class="section-header">
+    <div class="section-badge">Section 8 · Bonus</div>
+    <h1 class="section-title">The Grounding<br><em>Protocol</em></h1>
+    <p class="section-subtitle">The most ancient, most powerful, most overlooked wellness practice on earth. Literally.</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="content-block">
+    <div class="block-eyebrow">What is Grounding?</div>
+    <h2 class="block-title">Your body was never meant to <em>leave the earth.</em></h2>
+    <div class="block-body">
+      <p>For thousands of years, humans walked barefoot. We slept on the ground. We worked in soil. Our skin touched the earth every single day — and our bodies thrived because of it.</p>
+      <p>Then we put on rubber-soled shoes. We built elevated beds. We covered the earth in concrete. And somewhere along the way, we completely disconnected from the one thing that has always regulated, restored, and recharged the human body.</p>
+      <p><strong>Grounding — also called Earthing — is the practice of making direct physical contact with the earth's surface.</strong> Bare feet on grass. Bare hands in soil. Skin touching sand, stone, or water connected to the ground. It sounds simple because it is. And the science behind it is undeniable.</p>
+      <p>For anyone working to support their lymphatic system, grounding is not optional. It is foundational. The earth carries a natural negative electrical charge — and when your bare skin touches it, free electrons flood into your body, neutralizing inflammation at the cellular level.</p>
+      <p>This is not woo. This is physics. This is biology. This is your birthright.</p>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <div class="quote-text">"The earth beneath your feet is not just ground. It is <span>medicine.</span> It always has been."</div>
+    <div class="quote-attr">Purely Awakened · LymphFlow™</div>
+  </div>
+
+  <!-- SCIENCE -->
+  <div class="science-block">
+    <div class="science-title">🔬 The Science of Grounding</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;">Peer-reviewed research has shown that direct contact with the earth produces measurable, significant changes in the human body — many of which directly support lymphatic function and overall wellness.</p>
+    <div class="science-grid">
+      <div class="science-item">
+        <div class="science-item-title">Reduces Inflammation</div>
+        <div class="science-item-text">Free electrons from the earth neutralize free radicals — the root cause of chronic inflammation in the body.</div>
+      </div>
+      <div class="science-item">
+        <div class="science-item-title">Improves Circulation</div>
+        <div class="science-item-text">Studies show grounding improves blood flow and reduces blood viscosity — directly supporting lymphatic drainage.</div>
+      </div>
+      <div class="science-item">
+        <div class="science-item-title">Regulates Cortisol</div>
+        <div class="science-item-text">Grounding normalizes cortisol rhythm — reducing stress, improving sleep, and calming the nervous system.</div>
+      </div>
+      <div class="science-item">
+        <div class="science-item-title">Reduces Pain + Puffiness</div>
+        <div class="science-item-text">Participants in grounding studies reported significant reduction in pain, swelling, and inflammation markers.</div>
+      </div>
+      <div class="science-item">
+        <div class="science-item-title">Supports Immune Function</div>
+        <div class="science-item-text">Grounding has been shown to modulate immune response and reduce inflammatory markers in the blood.</div>
+      </div>
+      <div class="science-item">
+        <div class="science-item-title">Improves Sleep</div>
+        <div class="science-item-text">Earthing synchronizes cortisol with natural circadian rhythms — leading to deeper, more restorative sleep.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY IT MATTERS FOR LYMPH -->
+  <div class="content-block">
+    <div class="block-eyebrow">Why It Matters for Your Lymph</div>
+    <h2 class="block-title">Grounding and your lymphatic system are <em>deeply connected.</em></h2>
+    <div class="block-body">
+      <p>Your lymphatic system moves fluid, filters toxins, and manages inflammation throughout your entire body. But it has no pump. Unlike your cardiovascular system, lymph relies entirely on <strong>movement, breath, massage — and electrical balance.</strong></p>
+      <p>When your body carries excess positive charge from EMF exposure, chronic stress, and disconnection from the earth, your cells become inflamed, your fluid becomes stagnant, and your lymph cannot flow freely.</p>
+      <p><strong>Grounding restores your body's electrical balance.</strong> It literally resets the environment your lymphatic system operates in — reducing the inflammation that causes stagnation, and creating the conditions your body needs to drain, detox, and restore.</p>
+      <p>Think of it this way: everything else in this guide is helping your lymph move. Grounding is <strong>clearing the path</strong> so it can.</p>
+    </div>
+  </div>
+
+  <!-- SIGNS YOU NEED IT -->
+  <div class="symptom-block">
+    <div class="symptom-title">Signs Your Body Is Craving the Earth</div>
+    <div class="symptom-sub">These are your body's invitations — not warnings.</div>
+    <ul class="symptom-list">
+      <li>Chronic inflammation that won't respond to diet or exercise</li>
+      <li>Feeling electrically "charged" or anxious with no clear reason</li>
+      <li>Poor sleep even when you're exhausted</li>
+      <li>Persistent puffiness especially in legs and feet</li>
+      <li>Feeling disconnected from your body or your emotions</li>
+      <li>Heightened sensitivity to EMF — phones, screens, wifi</li>
+      <li>Restless legs or unexplained muscle tension</li>
+      <li>A deep, unexplainable longing to be outside or in nature</li>
+    </ul>
+  </div>
+
+  <!-- HOW TO GROUND -->
+  <div class="content-block">
+    <div class="block-eyebrow">How to Practice Grounding</div>
+    <h2 class="block-title">All you need is <em>bare skin and earth.</em></h2>
+    <div class="block-body">
+      <p>Grounding requires no equipment, no supplements, no gym membership. It requires only your willingness to step outside and touch the earth with your bare body. Here is what counts as grounding:</p>
+    </div>
+  </div>
+
+  <div class="practice-grid">
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">1</div>
+        <div class="practice-content">
+          <div class="practice-title">Bare Feet on Grass</div>
+          <div class="practice-desc">The most accessible form of grounding. Step outside onto natural grass — morning dew makes it even more conductive. Stand, walk slowly, or simply sit with your feet flat on the earth. Even 10 minutes produces measurable effects.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Best surface · Most accessible · Do this daily</div>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">2</div>
+        <div class="practice-content">
+          <div class="practice-title">Bare Feet on Soil or Sand</div>
+          <div class="practice-desc">Rich soil and wet sand are highly conductive. Walking barefoot on the beach or in a garden connects you to the earth's charge deeply and quickly. Sand at the ocean's edge is one of the most powerful grounding surfaces available.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Highly conductive · Ocean sand is especially powerful</div>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">3</div>
+        <div class="practice-content">
+          <div class="practice-title">Hands in Soil or Garden</div>
+          <div class="practice-desc">Digging in soil, tending a garden, or simply pressing your palms flat into the earth grounds you through your hands. This is why gardening feels so deeply therapeutic — it's not just mental. It's electrical.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Therapeutic · Creative · Deeply restorative</div>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">4</div>
+        <div class="practice-content">
+          <div class="practice-title">Wading in Natural Water</div>
+          <div class="practice-desc">Natural bodies of water — lakes, rivers, the ocean — are electrically connected to the earth. Standing or wading barefoot in natural water is a powerful and beautiful form of grounding that also supports lymphatic movement through hydrostatic pressure.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Powerful · Combines grounding + lymphatic support</div>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">5</div>
+        <div class="practice-content">
+          <div class="practice-title">Lying on the Earth</div>
+          <div class="practice-desc">Lying flat on natural ground — grass, soil, sand — maximizes skin-to-earth contact and is the most potent form of grounding available. Even 20–30 minutes of lying on the earth can produce profound shifts in how your body feels.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Most potent · Maximum skin contact · Deeply healing</div>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-top">
+        <div class="practice-num">6</div>
+        <div class="practice-content">
+          <div class="practice-title">Leaning Against a Tree</div>
+          <div class="practice-desc">Trees are deeply rooted into the earth and carry its electrical charge upward through their bark. Pressing your bare back, hands, or feet against a tree trunk connects you to the earth through the tree. This is not mythology — it is conductivity.</div>
+        </div>
+      </div>
+      <div class="practice-card-footer">Ancient practice · Deeply grounding · Try it barefoot</div>
+    </div>
+  </div>
+
+  <!-- DAILY PROTOCOL -->
+  <div class="protocol-block">
+    <div class="protocol-title">Your Daily Grounding Protocol</div>
+    <div class="protocol-sub">Minimum effective dose — build from here.</div>
+    <ul class="protocol-steps">
+      <li class="protocol-step">
+        <div class="step-time">Morning</div>
+        <div class="step-text"><strong>Step outside barefoot within 30 minutes of waking.</strong> Stand on grass or soil for at least 10 minutes. Breathe deeply. Let your nervous system settle into the day before screens, noise, or demands.</div>
+      </li>
+      <li class="protocol-step">
+        <div class="step-time">Midday</div>
+        <div class="step-text"><strong>Take a barefoot break.</strong> If you work from home or have access to a yard, remove your shoes for even 5–10 minutes during your day. This resets your stress response and supports afternoon energy.</div>
+      </li>
+      <li class="protocol-step">
+        <div class="step-time">Evening</div>
+        <div class="step-text"><strong>Ground before sunset.</strong> Evening grounding is particularly powerful for sleep — it regulates cortisol and prepares your nervous system for deep rest. 15–20 minutes of barefoot time outside before the sun goes down is ideal.</div>
+      </li>
+      <li class="protocol-step">
+        <div class="step-time">Weekly</div>
+        <div class="step-text"><strong>Go deeper once a week.</strong> Choose one day per week to do a longer grounding session — 30 to 60 minutes of lying on the earth, walking barefoot in nature, or wading in natural water. This is your reset day.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- WHAT TO EXPECT -->
+  <div class="content-block">
+    <div class="block-eyebrow">What to Expect</div>
+    <h2 class="block-title">Signs the earth is <em>working through you.</em></h2>
+    <div class="block-body">
+      <p>Many people feel a shift the very first time they ground intentionally. Others notice gradual changes over days and weeks. Here is what to watch for:</p>
+      <p><strong>In the first session:</strong> A tingling or warmth moving through your feet and legs. A sudden feeling of calm or heaviness — your nervous system releasing held tension. Some people feel emotional. That is normal. Let it move.</p>
+      <p><strong>In the first week:</strong> Improved sleep quality. Reduced morning puffiness. A lighter, more settled feeling in your body. Clearer skin beginning to emerge as inflammation decreases.</p>
+      <p><strong>In the first month:</strong> Noticeable reduction in chronic pain or tension. Improved energy and mood stability. A deep sense of being held — by something larger than yourself. Because you are.</p>
+    </div>
+  </div>
+
+  <!-- IMPORTANT NOTE -->
+  <div class="quote-block">
+    <div class="quote-text">"Rubber soles were invented to protect our feet. <span>But they also disconnected us from the earth's healing charge.</span> Going barefoot is not primitive. It is profound."</div>
+    <div class="quote-attr">Purely Awakened · LymphFlow™</div>
+  </div>
+
+  <!-- GROUNDING + LYMPH MASSAGE COMBO -->
+  <div class="content-block">
+    <div class="block-eyebrow">Power Practice</div>
+    <h2 class="block-title">Grounding + Lymphatic Massage: <em>The Ultimate Combo</em></h2>
+    <div class="block-body">
+      <p>For maximum lymphatic benefit, combine your grounding practice with your self-massage protocol from Section 3. Here is how:</p>
+      <p><strong>Step 1 —</strong> Go outside barefoot and stand or sit on the earth for 10 minutes before your massage. Let the earth begin reducing inflammation and improving circulation before you begin.</p>
+      <p><strong>Step 2 —</strong> Perform your lymphatic self-massage while sitting outside if possible — bare feet still touching the earth, absorbing its charge as you work.</p>
+      <p><strong>Step 3 —</strong> After your massage, lie flat on the earth for 10–15 minutes. Let gravity, the earth's charge, and your newly stimulated lymph flow work together to drain, release, and restore.</p>
+      <p>This combination is one of the most powerful things you can do for your lymphatic system — and it costs absolutely nothing.</p>
+    </div>
+  </div>
+
+  <!-- AFFIRMATIONS -->
+  <div class="affirmation-block">
+    <div class="block-eyebrow" style="color:var(--aqua);margin-bottom:8px;">Grounding Affirmations</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--sand);margin-bottom:4px;">Speak these with your feet on the earth.</h2>
+    <p style="font-size:13px;color:rgba(232,221,208,0.55);margin-bottom:4px;">Close your eyes. Feel the ground beneath you. Breathe.</p>
+    <div class="affirmation-grid">
+      <div class="aff-card">"I am rooted. I am supported. I am home."</div>
+      <div class="aff-card">"The earth holds me and I release into it."</div>
+      <div class="aff-card">"I return to my natural state — flowing and free."</div>
+      <div class="aff-card">"My body knows how to heal when I let the earth in."</div>
+      <div class="aff-card">"I am charged by something ancient and loving."</div>
+      <div class="aff-card">"Every step I take barefoot is a step toward wholeness."</div>
+    </div>
+  </div>
+
+  <!-- JOURNAL PROMPTS -->
+  <div class="journal-block">
+    <div class="journal-title">Grounding Journal Prompts</div>
+    <div class="journal-sub">Reflect after each grounding session. Notice what shifts.</div>
+    <div class="journal-prompt">
+      <div class="journal-prompt-q">How did my body feel before I grounded today?</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+    <div class="journal-prompt">
+      <div class="journal-prompt-q">What did I notice in my body during or after?</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+    <div class="journal-prompt">
+      <div class="journal-prompt-q">What did the earth feel like beneath me today?</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+    <div class="journal-prompt">
+      <div class="journal-prompt-q">What am I ready to release back to the earth?</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+    <div class="journal-prompt">
+      <div class="journal-prompt-q">How has consistent grounding changed how I feel in my body?</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="print-note">
+    Purely Awakened · LymphFlow™ · I am You, You are Me, We are We.<br>
+    This section may be printed for personal use only.
+  </div>
+
 </div>
-
-<!-- ANNOUNCEMENT BAR -->
-<div class="bar">🌿 Launch Special — $47 Today (Regular Price $67) · Offer Ends Soon ✦</div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Purely <span>Awakened</span></div>
-  <a href="https://purelyawakened.gumroad.com/l/obsxp" class="nav-cta">Get Instant Access</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Purely Awakened Presents</div>
-    <h1 class="hero-h1">Your body isn't<br>broken. It's just<br><em>not flowing.</em></h1>
-    <div class="hero-trademark">The Lymph Flow Wellness System™</div>
-    <p class="hero-desc">An 80+ page digital wellness guide to detox, drain, and restore your body from the inside out — no injections, no fad diets, no gym required.</p>
-    <div class="hero-badges">
-      <span class="badge">7-Day Reset</span>
-      <span class="badge">14-Day Reboot</span>
-      <span class="badge">80+ Pages</span>
-      <span class="badge">Instant Download</span>
-    </div>
-    <a href="https://purelyawakened.gumroad.com/l/obsxp" class="hero-btn">Yes, I'm Ready to Restore →</a>
-    <div class="hero-sub-note">Instant digital access · Download immediately · Yours forever</div>
-  </div>
-  <div class="hero-right">
-    <div class="mockup">
-      <div class="mockup-cover">
-        <div class="mockup-brand">Purely Awakened</div>
-        <div class="mockup-title">THE LYMPH FLOW<br>WELLNESS SYSTEM™</div>
-        <div class="mockup-sub">A Complete Guide to Detox, Drainage & Daily Renewal</div>
-        <div class="mockup-swatches">
-          <div class="mockup-swatch" style="background:#A8D5D1;"></div>
-          <div class="mockup-swatch" style="background:#E8DDD0;"></div>
-          <div class="mockup-swatch" style="background:#9BAE9A;"></div>
-        </div>
-        <div class="mockup-tagline">Restore · Release · Rebalance</div>
-      </div>
-      <div class="mockup-pages">
-        <div class="mockup-page-item"><div class="mockup-dot"></div><div class="mockup-page-name">7-Day Lymph Reset</div><div class="mockup-page-num">pg. 19</div></div>
-        <div class="mockup-page-item"><div class="mockup-dot"></div><div class="mockup-page-name">14-Day Lymph Reboot</div><div class="mockup-page-num">pg. 28</div></div>
-        <div class="mockup-page-item"><div class="mockup-dot"></div><div class="mockup-page-name">Foods That Support Flow</div><div class="mockup-page-num">pg. 45</div></div>
-        <div class="mockup-page-item"><div class="mockup-dot"></div><div class="mockup-page-name">Night Reflection Journal</div><div class="mockup-page-num">pg. 66</div></div>
-        <div class="mockup-page-item"><div class="mockup-dot"></div><div class="mockup-page-name">Affirmation Cards</div><div class="mockup-page-num">pg. 87</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><span class="trust-icon">🔒</span> Secure Checkout</div>
-  <div class="trust-item"><span class="trust-icon">⚡</span> Instant Digital Delivery</div>
-  <div class="trust-item"><span class="trust-icon">💚</span> 30-Day Money-Back Guarantee</div>
-  <div class="trust-item"><span class="trust-icon">♾️</span> Yours Forever</div>
-  <div class="trust-item"><span class="trust-icon">📱</span> Any Device, Any Time</div>
-</div>
-
-<!-- SOCIAL PROOF -->
-<div class="social-strip">
-  <div class="stat"><span class="stat-num">80+</span><span class="stat-label">Pages of Content</span></div>
-  <div class="stat"><span class="stat-num">7</span><span class="stat-label">Core Sections</span></div>
-  <div class="stat"><span class="stat-num">2</span><span class="stat-label">Reset Programs</span></div>
-  <div class="stat"><span class="stat-num">30</span><span class="stat-label">Day Guarantee</span></div>
-</div>
-
-<!-- WHO THIS IS FOR -->
-<section class="section who-section">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">Is this for you?</div>
-      <h2 class="section-h2">This was made for people who are <em>tired of feeling tired.</em></h2>
-      <p class="section-lead">Not the kind of tired that sleep fixes. The kind that lives in your body and won't let go — no matter what you try.</p>
-    </div>
-    <div class="who-grid reveal">
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> You wake up already exhausted and you don't know why</div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> You feel puffy, heavy, or inflamed no matter what you eat</div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> Your skin is dull, breaking out, or not responding to anything</div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> You've tried everything and still don't feel like yourself</div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> You want a gentle, grounded approach — not another extreme cleanse</div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-mark">✦</div>
-        <div class="who-text"><strong>This is for you if…</strong> You're ready to stop pushing through and start actually healing</div>
-      </div>
-      <div class="who-card no">
-        <div class="who-mark">✗</div>
-        <div class="who-text"><strong>This is NOT for you if…</strong> You want a magic pill that does the work for you with zero effort</div>
-      </div>
-      <div class="who-card no">
-        <div class="who-mark">✗</div>
-        <div class="who-text"><strong>This is NOT for you if…</strong> You're not ready to be consistent or show up for yourself</div>
-      </div>
-    </div>
-    <div class="relatable-note reveal">
-      <p>Nobody taught us that <span>the lymphatic system is the foundation of how we feel</span>. Not in school. Not at the doctor. This guide gives you what the wellness world has been sleeping on.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SYMPTOM SECTION -->
-<section class="section">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">Sound familiar?</div>
-      <h2 class="section-h2">You're doing everything <em>"right"</em> —<br>and still feel completely off.</h2>
-      <p class="section-lead">You're eating well, drinking water, getting some sleep. But your body still feels sluggish, puffy, and drained. Here's what nobody told you:</p>
-    </div>
-    <div class="symptom-grid reveal">
-      <div class="symptom-card">
-        <div class="symptom-icon">💧</div>
-        <div class="symptom-title">Persistent puffiness</div>
-        <div class="symptom-text">Swelling in your face, belly, legs, or ankles that won't budge no matter what you try.</div>
-      </div>
-      <div class="symptom-card">
-        <div class="symptom-icon">🌫️</div>
-        <div class="symptom-title">Brain fog & fatigue</div>
-        <div class="symptom-text">That heavy, foggy feeling that makes it hard to think clearly — even after a full night's sleep.</div>
-      </div>
-      <div class="symptom-card">
-        <div class="symptom-icon">🔥</div>
-        <div class="symptom-title">Chronic inflammation</div>
-        <div class="symptom-text">Aches, bloating, skin flare-ups and that constant internal tension you can't shake.</div>
-      </div>
-      <div class="symptom-card">
-        <div class="symptom-icon">⚡</div>
-        <div class="symptom-title">Low energy</div>
-        <div class="symptom-text">Running on empty by noon. No amount of coffee fixes it because it's not a caffeine problem.</div>
-      </div>
-      <div class="symptom-card">
-        <div class="symptom-icon">🪞</div>
-        <div class="symptom-title">Dull skin & breakouts</div>
-        <div class="symptom-text">Your skin is your largest detox organ. When lymph is stagnant, it shows up on your face first.</div>
-      </div>
-      <div class="symptom-card">
-        <div class="symptom-icon">😮‍💨</div>
-        <div class="symptom-title">That "stuck" feeling</div>
-        <div class="symptom-text">Not just physically. Emotionally drained, unmotivated, like your body is carrying something heavy.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRANSFORMATION SECTION -->
-<section class="transform-section">
-  <div class="transform-inner">
-    <div class="reveal">
-      <div class="section-tag">The shift that's possible</div>
-      <h2 class="section-h2" style="text-align:center;">Imagine waking up and<br><em>actually feeling good.</em></h2>
-      <p style="font-size:15px;color:rgba(232,221,208,0.65);line-height:1.8;margin:16px 0 36px;text-align:center;">This isn't fantasy. It's what happens when your lymphatic system finally gets what it needs.</p>
-    </div>
-    <div class="before-after reveal">
-      <div class="ba-col ba-before">
-        <div class="ba-label">Before</div>
-        <ul class="ba-items">
-          <li>Waking up already exhausted</li>
-          <li>Face and belly bloated daily</li>
-          <li>Brain fog before 10am</li>
-          <li>Skin dull and breaking out</li>
-          <li>Carrying tension everywhere</li>
-          <li>Trying everything, nothing sticks</li>
-        </ul>
-      </div>
-      <div class="ba-arrow">→</div>
-      <div class="ba-col ba-after">
-        <div class="ba-label">After</div>
-        <ul class="ba-items">
-          <li>Waking up clear and light</li>
-          <li>Puffiness reduced noticeably</li>
-          <li>Mental clarity throughout the day</li>
-          <li>Skin starting to glow again</li>
-          <li>Body feeling open and free</li>
-          <li>A system that actually works</li>
-        </ul>
-      </div>
-    </div>
-    <p class="reveal" style="font-size:14px;color:rgba(168,213,209,0.6);text-align:center;font-style:italic;">Results vary. The Lymph Flow Wellness System supports your body's natural processes — not a medical treatment.</p>
-  </div>
-</section>
-
-<!-- WHAT'S INSIDE -->
-<section class="section inside-section">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">What's Inside</div>
-      <h2 class="section-h2">Everything your body has<br><em>been asking for.</em></h2>
-      <p class="section-lead">Seven complete sections built to work together — from quick resets to deep, lasting restoration.</p>
-    </div>
-    <div class="inside-grid reveal">
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#f5f0e8,#ede4d0);">
-          <div class="inside-card-num">01</div>
-          <div class="inside-card-icon">🌿</div>
-          <div class="inside-card-title">7-Day Lymph Reset</div>
-          <div class="inside-card-desc">Quick results in one focused week. A structured daily plan to kick-start drainage and reduce inflammation fast.</div>
-        </div>
-        <div class="inside-card-footer">Quick results in one focused week</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#e8f5f4,#c8e8e6);">
-          <div class="inside-card-num">02</div>
-          <div class="inside-card-icon">🔄</div>
-          <div class="inside-card-title">14-Day Lymph Reboot</div>
-          <div class="inside-card-desc">Deeper transformation, lasting change. Two weeks to reset your system at the root level and make it stick.</div>
-        </div>
-        <div class="inside-card-footer">Deeper transformation, lasting change</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#eef2ee,#dde6dd);">
-          <div class="inside-card-num">03</div>
-          <div class="inside-card-icon">🥬</div>
-          <div class="inside-card-title">Foods That Support Flow</div>
-          <div class="inside-card-desc">Hydrating, anti-inflammatory, and mineral-rich foods your lymph system loves — plus a full herbal guide.</div>
-        </div>
-        <div class="inside-card-footer">Nourish from the inside out</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#f0ede8,#e4d8c8);">
-          <div class="inside-card-num">04</div>
-          <div class="inside-card-icon">🤲</div>
-          <div class="inside-card-title">Lymphatic Massage Guide</div>
-          <div class="inside-card-desc">Step-by-step self-massage you can do at home with your own hands. Move stagnant fluid and reduce puffiness today.</div>
-        </div>
-        <div class="inside-card-footer">Feel the difference immediately</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#e8f0f5,#c8d8e8);">
-          <div class="inside-card-num">05</div>
-          <div class="inside-card-icon">🌙</div>
-          <div class="inside-card-title">Nighttime Ritual Pages</div>
-          <div class="inside-card-desc">Night reflection prompts and wind-down rituals built around your body's natural overnight repair cycle.</div>
-        </div>
-        <div class="inside-card-footer">"What can I release before I rest?"</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#f5f0e8,#ede4d0);">
-          <div class="inside-card-num">06</div>
-          <div class="inside-card-icon">✨</div>
-          <div class="inside-card-title">Affirmation Card Set</div>
-          <div class="inside-card-desc">Beautiful affirmation cards to anchor your mindset throughout the reset. Because real healing is mental too.</div>
-        </div>
-        <div class="inside-card-footer">Mind, body, spirit alignment</div>
-      </div>
-      <div class="inside-card">
-        <div class="inside-card-top" style="background:linear-gradient(135deg,#eef2ee,#dde6dd);">
-          <div class="inside-card-num">07</div>
-          <div class="inside-card-icon">📓</div>
-          <div class="inside-card-title">Full Wellness Journal</div>
-          <div class="inside-card-desc">Weekly check-ins, intention setting, hydration + movement trackers and daily reflections to watch yourself transform.</div>
-        </div>
-        <div class="inside-card-footer">Track every step of your journey</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROMISE SECTION -->
-<section class="promise-section">
-  <div class="promise-inner">
-    <div class="reveal">
-      <div class="section-tag">Your Lymph Flow Promise</div>
-      <h2 class="section-h2">This is your commitment<br><em>to yourself.</em></h2>
-      <p style="font-size:15px;color:rgba(232,221,208,0.6);line-height:1.8;max-width:480px;margin:0 auto 32px;">Every page of this guide was created with one intention — to help you finally feel at home in your body again.</p>
-    </div>
-    <div class="affirmation-grid reveal">
-      <div class="aff-card">"I choose flow over stagnation."</div>
-      <div class="aff-card">"I choose nourishment over depletion."</div>
-      <div class="aff-card">"I choose clarity over chaos."</div>
-      <div class="aff-card">"My body knows how to heal."</div>
-    </div>
-    <p class="reveal" style="font-size:16px;color:rgba(232,221,208,0.65);line-height:1.8;max-width:520px;margin:0 auto;">Your body already knows how to restore itself. This system just gives it the tools, the structure, and the intention to finally do it.</p>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-tag">Real Results</div>
-      <h2 class="section-h2">What happens when you<br><em>start supporting your flow.</em></h2>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text">"I didn't realize how puffy and heavy I'd been feeling until it started to lift. By day 4 of the reset I felt lighter — not just physically. Mentally too."</div>
-        <div class="testi-name">— Verified Customer</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text">"The foods guide alone changed how I eat. I had no idea ginger and turmeric were doing so much for drainage. This guide is thorough and actually makes sense."</div>
-        <div class="testi-name">— Verified Customer</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text">"The nighttime ritual pages have become non-negotiable for me. 'What can I release before I rest?' — that one question shifted everything. Worth every single penny."</div>
-        <div class="testi-name">— Verified Customer</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEE -->
-<section class="guarantee-section">
-  <div class="section-inner">
-    <div class="guarantee-box reveal">
-      <div class="guarantee-seal">
-        <span>🛡️</span>
-        <small>30-Day<br>Guarantee</small>
-      </div>
-      <div>
-        <div class="guarantee-title">Try it completely risk-free.</div>
-        <p class="guarantee-text">I want you to feel the difference before you fully commit. That's why the Lymph Flow Wellness System comes with a <strong>30-day money-back guarantee</strong>. If you go through the guide, do the work, and don't feel any shift in your body — reach out and I'll refund you completely. No hoops, no hard feelings. Your healing matters more than a sale.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="section pricing-section" id="pricing">
-  <div class="section-inner">
-    <div class="reveal" style="text-align:center;margin-bottom:36px;">
-      <div class="section-tag">Get Instant Access</div>
-      <h2 class="section-h2">Your body has waited<br><em>long enough.</em></h2>
-      <p style="font-size:15px;color:var(--muted);margin-top:8px;">Digital download — access everything immediately on any device.</p>
-    </div>
-    <div class="pricing-card reveal">
-      <div class="pricing-top">
-        <div class="pricing-badge">Complete Wellness System</div>
-        <div class="pricing-name">The Lymph Flow Wellness System™</div>
-        <div class="pricing-strike">Regular Price <s>$67</s></div>
-        <div class="pricing-price"><sup>$</sup>47</div>
-        <div class="pricing-price-note">🌿 Launch Special · One-time payment · Instant download</div>
-        <div class="countdown-wrap">
-          <div class="countdown-label">This offer expires in</div>
-          <div class="countdown-timer">
-            <div class="countdown-block"><span id="cd-hours">00</span><small>hrs</small></div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-block"><span id="cd-mins">00</span><small>min</small></div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-block"><span id="cd-secs">00</span><small>sec</small></div>
-          </div>
-        </div>
-      </div>
-      <div class="pricing-body">
-        <ul class="pricing-features">
-          <li><span class="check">✦</span> 7-Day Lymph Reset — quick results in one focused week</li>
-          <li><span class="check">✦</span> 14-Day Lymph Reboot — deeper transformation, lasting change</li>
-          <li><span class="check">✦</span> Foods That Support Flow + Full Herbal Guide</li>
-          <li><span class="check">✦</span> Step-by-Step Lymphatic Self-Massage Guide</li>
-          <li><span class="check">✦</span> Nighttime Ritual + Night Reflection Pages</li>
-          <li><span class="check">✦</span> Affirmation Card Set</li>
-          <li><span class="check">✦</span> Full Wellness Journal with trackers + weekly check-ins</li>
-          <li><span class="check">✦</span> 80+ beautifully designed pages · yours forever</li>
-          <li><span class="check">✦</span> 30-Day Money-Back Guarantee — zero risk</li>
-        </ul>
-        <a href="https://purelyawakened.gumroad.com/l/obsxp" class="pricing-btn">Yes, I Want to Restore My Flow →</a>
-        <div class="pricing-guarantee-note">🔒 Secure checkout · Instant digital delivery · 30-day guarantee</div>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="reveal">
-      <div style="text-align:center;margin:52px 0 24px;">
-        <div class="section-tag">Quick Questions</div>
-        <h2 class="section-h2" style="margin-top:16px;">Still on the fence?<br><em>We've got answers.</em></h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How do I access the guide after purchase? <span class="faq-icon">+</span></div>
-          <div class="faq-a">You'll receive an instant download link via email right after purchase. The guide opens as a beautiful digital FlippingBook — no apps needed, works on your phone, tablet, or computer.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Do I need any special products or supplements? <span class="faq-icon">+</span></div>
-          <div class="faq-a">No. The entire system is designed around what you already have — food, water, movement, and your own hands for massage. No expensive supplements, equipment, or memberships required.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Is this a diet or weight loss program? <span class="faq-icon">+</span></div>
-          <div class="faq-a">Not a diet — a whole-body wellness system. The focus is on supporting your lymphatic system to reduce inflammation, improve energy, and help your body release what it's been holding onto. Changes in puffiness and weight can happen naturally as a result.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How long until I feel a difference? <span class="faq-icon">+</span></div>
-          <div class="faq-a">Many people notice a difference within the first few days of the 7-Day Reset — feeling lighter, less puffy, more mentally clear. The 14-Day Reboot builds on that for deeper, lasting results.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for me? <span class="faq-icon">+</span></div>
-          <div class="faq-a">That's exactly what the 30-day guarantee is for. If you do the work and don't feel a shift, reach out for a full refund. Simple as that. Your healing matters more than a sale.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="final-cta-inner reveal">
-    <h2>Your body is ready<br>to <em>restore, release,<br>and rebalance.</em></h2>
-    <p>You've been carrying this long enough. You deserve to feel light, clear, and fully alive in your body again. This is your starting point.</p>
-    <a href="https://purelyawakened.gumroad.com/l/obsxp" class="final-cta-btn">Get Instant Access — $47 →</a>
-    <div class="final-cta-note">30-day money-back guarantee · Instant digital delivery · Yours forever</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Purely Awakened</div>
-  <div class="footer-tagline">Restore · Release · Rebalance</div>
-  <div class="footer-note">© 2026 Purely Awakened · purelyawakened.com · All rights reserved<br>This product is a digital wellness guide and is not intended to diagnose, treat, cure, or prevent any disease.</div>
-</footer>
-
-<script>
-// Countdown timer
-const key = 'lymph_countdown_end';
-let endTime = sessionStorage.getItem(key);
-if (!endTime) { endTime = Date.now() + 24*60*60*1000; sessionStorage.setItem(key, endTime); }
-function updateCountdown() {
-  const diff = Math.max(0, endTime - Date.now());
-  const h = Math.floor(diff/3600000);
-  const m = Math.floor((diff%3600000)/60000);
-  const s = Math.floor((diff%60000)/1000);
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
-}
-updateCountdown(); setInterval(updateCountdown,1000);
-
-// Floating bar — show after scrolling past hero
-const floatBar = document.getElementById('floatBar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > window.innerHeight * 0.8) floatBar.classList.add('visible');
-  else floatBar.classList.remove('visible');
-});
-
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-reveals.forEach(el => observer.observe(el));
-
-// FAQ
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-</script>
 </body>
 </html>
